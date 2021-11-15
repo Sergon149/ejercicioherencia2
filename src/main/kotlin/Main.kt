@@ -15,10 +15,10 @@ fun main() {
     // Peso ideal del perro = 22
     // Peso ideal del gato = 2.2
     // Peso ideal de la persona = 85
-    /*lista.forEach {
+    lista.forEach {
         // Para el gato 1, el resutlado es -0,2. Para el perro 1 - 2.0, para la persona 1 es + 4.
-        println("Este animal tiene un peso de ${it.calcularDesviacionDelPesoIdeal()} sobre lo esprado")
-    }*/
+        println("Este animal tiene un peso de ${it.calcularDesviacionDelPesoIdeal()} sobre lo esperado")
+    }
 
 }
 
@@ -61,13 +61,20 @@ fun calcularPesoMedioPersonas(lista: List<Any>): Double {
     media = total/cont
     return media
 }
-
-class Gato(var peso: Double){
-
-}
-class Perro(var peso: Double){
+fun calcularDesviacionDelPesoIdeal(){
 
 }
-class Persona(var peso: Double){
+open class SerVivo(){
+    fun calcularDesviacionDelPesoIdeal(){
+
+    }
+}
+class Gato(var peso: Double) : SerVivo(){
+
+}
+class Perro(var peso: Double) : SerVivo(){
+
+}
+class Persona(var peso: Double) : SerVivo(){
 
 }
