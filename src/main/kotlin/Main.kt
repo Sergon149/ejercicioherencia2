@@ -41,7 +41,7 @@ fun calcularPesoMedioPerros(lista: List<Any>): Double {
     for (i in lista){
         if(i is Perro){
             cont++
-            total+=i.peso++
+            total+=i.peso
         }
     }
     var media : Double = 0.0
@@ -54,27 +54,31 @@ fun calcularPesoMedioPersonas(lista: List<Any>): Double {
     for (i in lista){
         if(i is Persona){
             cont++
-            total+=i.peso++
+            total+=i.peso
         }
     }
     var media : Double = 0.0
     media = total/cont
     return media
 }
-fun calcularDesviacionDelPesoIdeal(){
 
-}
-open class SerVivo(){
-    fun calcularDesviacionDelPesoIdeal(){
+abstract class SerVivo(var peso: Double){
+    abstract var PesoIdeal : Double
 
+    open fun peso():Double{
+        return this.peso
+    }
+
+    fun calcularDesviacionDelPesoIdeal(): Double {
+        return peso()-PesoIdeal
     }
 }
-class Gato(var peso: Double) : SerVivo(){
-
+class Gato(peso: Double) : SerVivo(peso){
+    override var PesoIdeal : Double = 2.2
 }
-class Perro(var peso: Double) : SerVivo(){
-
+class Perro(peso: Double) : SerVivo(peso){
+    override var PesoIdeal : Double = 22.0
 }
-class Persona(var peso: Double) : SerVivo(){
-
+class Persona(peso: Double) : SerVivo(peso){
+    override var PesoIdeal : Double = 85.0
 }
